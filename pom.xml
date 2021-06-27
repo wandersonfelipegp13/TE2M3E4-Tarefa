@@ -1,0 +1,7 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>te2.m3.e4.tarefa</groupId>
+  <artifactId>TE2M3E4-Tarefa</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Tarefa do encontro 4 do módulo 3 da disciplina de Tópicos Especiais II do bacharelado em Sistemas de Informação do IF Goiano - Campus Urutaí.</name>
+</project>
