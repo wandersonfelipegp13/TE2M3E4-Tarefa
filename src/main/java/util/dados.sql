@@ -18,4 +18,17 @@ INSERT INTO legislatura VALUES
 
 CREATE TABLE deputado (
 	
+      uri VARCHAR(100) PRIMARY KEY NOT NULL,
+      nome VARCHAR(100) NOT NULL,
+      idLegislaturaInicial INT NOT NULL, 
+      idLegislaturaFinal INT NOT NULL,
+      nomeCivil VARCHAR(100) NOT NULL,
+      siglaSexo CHAR(1) NOT NULL,
+      urlRedeSocial 
+      urlWebsite 
+      dataNascimento 
+      dataFalecimento 
+      ufNascimento 
+      municipioNascimento 
+    
 );
