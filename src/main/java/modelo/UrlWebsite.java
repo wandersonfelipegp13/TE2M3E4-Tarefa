@@ -10,6 +10,11 @@ public class UrlWebsite {
 		this.setUrl(url);
 	}
 
+	public UrlWebsite(String url) {
+		super();
+		this.setUrl(url);
+	}
+	
 	public int getId() {
 		return id;
 	}

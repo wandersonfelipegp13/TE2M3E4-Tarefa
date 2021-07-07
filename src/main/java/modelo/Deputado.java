@@ -12,8 +12,8 @@ public class Deputado {
 	private String nomeCivil;
 	private String cpf;
 	private String siglaSexo;
-	private List<String> urlRedeSocial;
-	private List<String> urlWebsite;
+	private List<UrlRedeSocial> urlRedeSocial;
+	private List<UrlWebsite> urlWebsite;
 	private String dataNascimento;
 	private String dataFalecimento;
 	private String ufNascimento;
@@ -113,9 +113,9 @@ public class Deputado {
 
 	public void addUrlRedeSocial(String urlRedeSocial) {
 		if(this.urlRedeSocial == null)
-			this.urlRedeSocial = new ArrayList<String>();
+			this.urlRedeSocial = new ArrayList<UrlRedeSocial>();
 		if(urlRedeSocial != null && urlRedeSocial != "" && !urlRedeSocial.contains("\n") && !urlRedeSocial.contains("\t"))
-			this.urlRedeSocial.add(urlRedeSocial);
+			this.urlRedeSocial.add(new UrlRedeSocial(urlRedeSocial));
 	}
 
 	public String getUrlWebsite() {
@@ -124,9 +124,9 @@ public class Deputado {
 
 	public void addUrlWebsite(String urlWebsite) {
 		if(this.urlWebsite == null)
-			this.urlWebsite = new ArrayList<String>();
+			this.urlWebsite = new ArrayList<UrlWebsite>();
 		if(urlWebsite != null && urlWebsite != "" && !urlWebsite.contains("\n") && !urlWebsite.contains("\t"))
-			this.urlWebsite.add(urlWebsite);
+			this.urlWebsite.add(new UrlWebsite(urlWebsite));
 	}
 
 	public String getDataNascimento() {

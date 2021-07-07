@@ -10,6 +10,11 @@ public class UrlRedeSocial {
 		this.setId(id);
 		this.setUrl(url);
 	}
+	
+	public UrlRedeSocial(String url) {
+		super();
+		this.setUrl(url);
+	}
 
 	public int getId() {
 		return id;
