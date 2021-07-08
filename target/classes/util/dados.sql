@@ -28,10 +28,10 @@ CREATE TABLE deputado (
     nomeCivil VARCHAR(100) NOT NULL,
     cpf VARCHAR(20),
     siglaSexo CHAR(1) NOT NULL,
-    dataNascimento DATE NOT NULL,
+    dataNascimento DATE,
     dataFalecimento DATE,
-    ufNascimento CHAR(2) NOT NULL,
-    municipioNascimento VARCHAR(100) NOT NULL,
+    ufNascimento CHAR(2),
+    municipioNascimento VARCHAR(100),
 	
     CONSTRAINT fk_LegislaturaInicial FOREIGN KEY (idLegislaturaInicial) REFERENCES Legislatura (idLegislatura),
     CONSTRAINT fk_LegislaturaFinal FOREIGN KEY (idLegislaturaFinal) REFERENCES Legislatura (idLegislatura)

@@ -6,6 +6,9 @@ public class PopularBD {
 		
 		PopularLegislatura l = new PopularLegislatura();
 		l.insereDados();
+		
+		PopularDeputado d = new PopularDeputado();
+		d.insereDados();
 
 	}
 
