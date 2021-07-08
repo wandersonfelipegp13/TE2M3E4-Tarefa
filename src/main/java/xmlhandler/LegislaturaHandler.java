@@ -69,7 +69,7 @@ public class LegislaturaHandler {
 				leg.setAnoEleicao(anoEleicao);
 				
 				legislaturas.add(leg);
-				System.out.println(leg);
+				// System.out.println(leg);
 
 			}
 		}
