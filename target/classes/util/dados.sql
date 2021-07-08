@@ -42,7 +42,4 @@ CREATE TABLE deputado (
     
 ) ENGINE=InnoDb charset=utf8 COLLATE utf8_unicode_ci;
 
-INSERT INTO deputado (uri, nome, idLegislaturaInicial, idLegislaturaFinal, nomeCivil, siglaSexo, dataNascimento, dataFalecimento, ufNascimento, municipioNascimento) VALUES 
-("jao.com", "Jao", 55, 56, "Pedro", 'M', "1999-02-01", null, "GO", "Orizona");
-
 

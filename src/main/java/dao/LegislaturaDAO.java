@@ -8,7 +8,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import modelo.Legislatura;
 
 public class LegislaturaDAO {
-	
+
 	protected SessionFactory sessionFactory;
 
 	public void setup() {
@@ -28,16 +28,30 @@ public class LegislaturaDAO {
 		sessionFactory.close();
 	}
 
-	public void create(Legislatura legislatura) {
+	public Legislatura read(int idLegislatura) {
 
 		Session session = sessionFactory.openSession();
-		session.beginTransaction();
 
-		session.save(legislatura);
-		
-		session.getTransaction().commit();
+		Legislatura leg = session.get(Legislatura.class, idLegislatura);
+
 		session.close();
-		
+
+		return leg;
+	}
+
+	public void create(Legislatura legislatura) {
+
+		if (legislatura != null && read(legislatura.getIdLegislatura()) == null) {
+
+			Session session = sessionFactory.openSession();
+			session.beginTransaction();
+
+			session.save(legislatura);
+
+			session.getTransaction().commit();
+			session.close();
+		}
+
 	}
 
 }

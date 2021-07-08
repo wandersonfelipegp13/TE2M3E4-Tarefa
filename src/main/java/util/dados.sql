@@ -12,10 +12,6 @@ CREATE TABLE legislatura (
 	anoEleicao INT NOT NULL
 ) ENGINE=InnoDb charset=utf8 COLLATE utf8_unicode_ci;
 
-INSERT INTO legislatura VALUES 
-(56, "https://dadosabertos.camara.leg.br/api/v2/legislaturas/%s56", "2019-02-01", "2023-01-31", 2018),
-(55, "https://dadosabertos.camara.leg.br/api/v2/legislaturas/%s55", "2015-02-01", "2019-01-31", 2014);
-
 CREATE TABLE urlRedeSocial (
 	id_dep VARCHAR(100) PRIMARY KEY NOT NULL,
 	url VARCHAR(100) NOT NULL
@@ -41,8 +37,5 @@ CREATE TABLE deputado (
     CONSTRAINT fk_LegislaturaFinal FOREIGN KEY (idLegislaturaFinal) REFERENCES Legislatura (idLegislatura)
     
 ) ENGINE=InnoDb charset=utf8 COLLATE utf8_unicode_ci;
-
-INSERT INTO deputado (uri, nome, idLegislaturaInicial, idLegislaturaFinal, nomeCivil, siglaSexo, dataNascimento, dataFalecimento, ufNascimento, municipioNascimento) VALUES 
-("jao.com", "Jao", 55, 56, "Pedro", 'M', "1999-02-01", null, "GO", "Orizona");
 
 

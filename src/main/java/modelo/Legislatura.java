@@ -15,7 +15,7 @@ public class Legislatura {
 	
 	@Id
 	@Column(name = "idLegislatura")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idLegislatura;
 	
 	@Column(name = "uri")
