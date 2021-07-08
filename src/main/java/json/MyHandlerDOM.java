@@ -23,14 +23,13 @@ import modelo.UrlWebsite;
 public class MyHandlerDOM {
 	
 	private List<Deputado> deps;
-	private List<UrlRedeSocial> redes;
-	private List<UrlWebsite> webs;
+	
 
 	public List<Deputado> fazerParsing(String pathArq) throws SAXException, IOException, ParserConfigurationException {
 
 		deps = new ArrayList<Deputado>();
-		redes = new ArrayList<UrlRedeSocial>();
-		webs = new ArrayList<UrlWebsite>();
+		// redes = new ArrayList<UrlRedeSocial>();
+		// webs = new ArrayList<UrlWebsite>();
 
 		File xmlFile = new File(pathArq);
 
@@ -114,7 +113,7 @@ public class MyHandlerDOM {
 				dep.setCpf(cpf);
 				dep.setSiglaSexo(siglaSexo);
 				// dep.setDataNascimento(dataNascimento);
-				dep.setDataFalecimento(dataFalecimento);
+				// dep.setDataFalecimento(dataFalecimento);
 				dep.setUfNascimento(ufNascimento);
 				dep.setMunicipioNascimento(municipioNascimento);
 

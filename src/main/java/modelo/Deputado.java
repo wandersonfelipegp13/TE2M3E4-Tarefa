@@ -43,7 +43,7 @@ public class Deputado {
 	private Date dataNascimento;
 	
 	@Column(name = "datafalecimento")
-	private String dataFalecimento;
+	private Date dataFalecimento;
 	
 	@Column(name = "ufnascimento")
 	private String ufNascimento;
@@ -56,7 +56,7 @@ public class Deputado {
 	}
 
 	public Deputado(int id, String uri, String nome, int idLegislaturaInicial, int idLegislaturaFinal,
-			String nomeCivil, String cpf, String siglaSexo, Date dataNascimento, String dataFalecimento,
+			String nomeCivil, String cpf, String siglaSexo, Date dataNascimento, Date dataFalecimento,
 			String ufNascimento, String municipioNascimento) {
 		super();
 		this.setId(id);
@@ -145,11 +145,11 @@ public class Deputado {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public String getDataFalecimento() {
+	public Date getDataFalecimento() {
 		return dataFalecimento;
 	}
 
-	public void setDataFalecimento(String dataFalecimento) {
+	public void setDataFalecimento(Date dataFalecimento) {
 		this.dataFalecimento = dataFalecimento;
 	}
 
@@ -177,7 +177,7 @@ public class Deputado {
 				+ idLegislaturaInicial + ", idLegislaturaFinal=" + idLegislaturaFinal + ", nomeCivil=" + nomeCivil
 				+ ", cpf=" + cpf + ", siglaSexo=" + siglaSexo + ", dataNascimento=" + dataNascimento
 				+ ", dataFalecimento=" + dataFalecimento + ", ufNascimento=" + ufNascimento + ", municipioNascimento="
-				+ municipioNascimento + "]";
+				+ municipioNascimento;
 	}
 
 }

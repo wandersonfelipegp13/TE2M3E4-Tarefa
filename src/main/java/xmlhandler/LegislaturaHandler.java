@@ -19,6 +19,8 @@ import modelo.Legislatura;
 public class LegislaturaHandler {
 
 	private List<Legislatura> legislaturas;
+	// private List<UrlRedeSocial> redes;
+	// private List<UrlWebsite> webs;
 
 	public List<Legislatura> fazerParsing(String pathArq)
 			throws SAXException, IOException, ParserConfigurationException {
