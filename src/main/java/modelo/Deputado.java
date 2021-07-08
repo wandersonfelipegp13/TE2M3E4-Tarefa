@@ -169,6 +169,7 @@ public class Deputado {
 		this.municipioNascimento = municipioNascimento;
 	}
 
+	// TODO add hash e equals
 
 	@Override
 	public String toString() {
