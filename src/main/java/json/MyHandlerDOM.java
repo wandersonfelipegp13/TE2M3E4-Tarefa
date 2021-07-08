@@ -62,18 +62,10 @@ public class MyHandlerDOM {
 
 				Node node2 = elem.getElementsByTagName("nome").item(0);
 				String nome = node2.getTextContent();
-				
-				// Legislatura 
-				
-				Legislatura legislaturaInicial = new Legislatura();
-				// Legislatura legislaturaFinal = new Legislatura();
-				
+							
 				Node node3 = elem.getElementsByTagName("idLegislaturaInicial").item(0);
 				int idLegislaturaInicial = Integer.parseInt(node3.getTextContent());
 				
-				
-				
-
 				Node node4 = elem.getElementsByTagName("idLegislaturaFinal").item(0);
 				int idLegislaturaFinal = Integer.parseInt(node4.getTextContent());
 
@@ -116,6 +108,8 @@ public class MyHandlerDOM {
 				dep.setId(id);
 				dep.setUri(uri);
 				dep.setNome(nome);
+				dep.setIdLegislaturaInicial(idLegislaturaInicial);
+				dep.setIdLegislaturaInicial(idLegislaturaInicial);
 				dep.setNomeCivil(nomeCivil);
 				dep.setCpf(cpf);
 				dep.setSiglaSexo(siglaSexo);

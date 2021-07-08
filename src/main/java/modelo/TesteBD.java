@@ -49,19 +49,13 @@ public class TesteBD {
 		TesteBD teste = new TesteBD();
 		teste.setup();
 		
-		/*
+		
 		Deputado d = new Deputado();
 		
 		d.setUri("sola.com");		
 		d.setNome("Sola");
-		
-		Date date1 = Date.valueOf(LocalDate.of(1960, Month.FEBRUARY, 22));
-		Date date2 = Date.valueOf(LocalDate.of(1964, Month.FEBRUARY, 22));
-		
-		Legislatura li = new Legislatura("uri.com", date1, date2, 1959);
-		d.setIdLegislaturaInicial(li);
-		d.setIdLegislaturaFinal(null);
-		
+		d.setIdLegislaturaInicial(55);
+		d.setIdLegislaturaFinal(56);
 	    d.setNomeCivil("Solae");
 	    d.setCpf("123.214.221-23");
 	    d.setSiglaSexo("M");
@@ -74,7 +68,6 @@ public class TesteBD {
 	    d.setMunicipioNascimento("Texas");
 		
 		teste.create(d);
-		*/
 		
 		teste.exit();
 
