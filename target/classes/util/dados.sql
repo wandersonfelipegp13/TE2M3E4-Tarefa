@@ -21,6 +21,15 @@ CREATE TABLE urlRedeSocial (
 	
 );
 
+CREATE TABLE urlWebsite (
+	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	url VARCHAR(800) NOT NULL,
+	id_deputado INT NOT NULL,
+	
+	CONSTRAINT fk_idDeputado FOREIGN KEY (id_deputado) REFERENCES deputado(id)
+	
+);
+
 CREATE TABLE deputado (
 	
 	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,

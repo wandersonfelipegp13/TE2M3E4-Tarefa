@@ -10,22 +10,23 @@ import org.xml.sax.SAXException;
 
 import dao.DeputadoDAO;
 import dao.UrlRedeSocialDAO;
+import dao.UrlWebsiteDAO;
 import modelo.Deputado;
 import modelo.UrlRedeSocial;
-// import modelo.UrlWebsite;
+import modelo.UrlWebsite;
 import xmlhandler.DeputadoHandler;
 
 public class PopularDeputado {
 	
 	private List<Deputado> deps;
 	private List<UrlRedeSocial> redes;
-	// private List<UrlWebsite> sites;
+	private List<UrlWebsite> sites;
 
 	private void pegaDados() {
 		
 		deps = new ArrayList<Deputado>();
 		redes = new ArrayList<UrlRedeSocial>();
-		// sites = new ArrayList<UrlWebsite>();
+		sites = new ArrayList<UrlWebsite>();
 
 		try {
 
@@ -35,7 +36,7 @@ public class PopularDeputado {
 
 			deps = dom.getDeputados();
 			redes = dom.getRedes();
-			// sites = dom.getSites();
+			sites = dom.getSites();
 			
 		} catch (ParserConfigurationException | SAXException | IOException e) {
 			StringBuilder msg = new StringBuilder();
@@ -59,17 +60,15 @@ public class PopularDeputado {
 		
 		UrlRedeSocialDAO daoRede = new UrlRedeSocialDAO();
 		daoRede.setup();
-		for (int i = 0; i < redes.size(); i++) {
+		for (int i = 0; i < redes.size(); i++)
 			daoRede.create(redes.get(i));
-			System.out.println(redes.get(i).getUrl() + "\n");
-		}
 		daoRede.exit();
 		
-		/*
-		for (int i = 0; i < deps.size(); i++)
-			dao.create(deps.get(i));
-		*/
-		
+		UrlWebsiteDAO daoSites = new UrlWebsiteDAO();
+		daoSites.setup();
+		for (int i = 0; i < sites.size(); i++)
+			daoSites.create(sites.get(i));
+		daoSites.exit();
 		
 	}
 
