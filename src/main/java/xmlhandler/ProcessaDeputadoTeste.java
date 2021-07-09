@@ -9,12 +9,14 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
 import modelo.Deputado;
+import modelo.UrlRedeSocial;
 
 public class ProcessaDeputadoTeste {
 
 	public static void main(String[] args) {
 
 		List<Deputado> deps = new ArrayList<Deputado>();
+		List<UrlRedeSocial> redes = new ArrayList<UrlRedeSocial>();
 
 		try {
 
@@ -30,8 +32,11 @@ public class ProcessaDeputadoTeste {
 			System.out.println(msg);
 		}
 
-		for (int i = 0; i < deps.size(); i++)
-			System.out.println(deps.get(i).toString());
+		// for (int i = 0; i < deps.size(); i++)
+			// System.out.println(deps.get(i).toString());
+		
+		for (int i = 0; i < redes.size(); i++)
+			System.out.println(redes.get(i).toString());
 
 	}
 }

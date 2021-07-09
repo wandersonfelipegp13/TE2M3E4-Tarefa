@@ -1,9 +1,28 @@
 package modelo;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "urlredesocial")
 public class UrlRedeSocial {
 
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	@Column(name = "id_deputado")
+	@Basic(optional = false)
 	private int idDeputado;
+	
+	@Column(name = "url")
+	@Basic(optional = false)
 	private String url;
 	
 	public UrlRedeSocial() {
@@ -44,6 +63,8 @@ public class UrlRedeSocial {
 	}
 
 	public void setUrl(String url) {
+		url = url.replaceAll("\n", "");
+		url = url.replaceAll("\t", "");
 		this.url = url;
 	}
 

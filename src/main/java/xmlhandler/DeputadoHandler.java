@@ -17,15 +17,19 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import modelo.Deputado;
+import modelo.UrlRedeSocial;
+import modelo.UrlWebsite;
 
 public class DeputadoHandler {
-	
+
 	private List<Deputado> deputados;
-	
-	public List<Deputado> fazerParsing(String pathArq)
-			throws SAXException, IOException, ParserConfigurationException {
+	private List<UrlRedeSocial> redes;
+	private List<UrlWebsite> sites;
+
+	public List<Deputado> fazerParsing(String pathArq) throws SAXException, IOException, ParserConfigurationException {
 
 		deputados = new ArrayList<Deputado>();
+		redes = new ArrayList<UrlRedeSocial>();
 
 		File xmlFile = new File(pathArq);
 
@@ -48,50 +52,94 @@ public class DeputadoHandler {
 				Element elem = (Element) nNode;
 				Deputado d = new Deputado();
 				Node node;
-				
+
 				node = elem.getElementsByTagName("uri").item(0);
 				String uri = node.getTextContent();
-				
+
 				// Pegar o id
 				String[] teste = uri.split("/");
 				int id = Integer.parseInt(teste[teste.length - 1]);
-				
+
 				node = elem.getElementsByTagName("nome").item(0);
 				String nome = node.getTextContent();
-				
+
 				node = elem.getElementsByTagName("idLegislaturaInicial").item(0);
 				int idLegislaturaInicial = Integer.parseInt(node.getTextContent());
-				
+
 				node = elem.getElementsByTagName("idLegislaturaFinal").item(0);
 				int idLegislaturaFinal = Integer.parseInt(node.getTextContent());
-				
+
 				node = elem.getElementsByTagName("nomeCivil").item(0);
 				String nomeCivil = node.getTextContent();
-				
+
 				node = elem.getElementsByTagName("cpf").item(0);
 				String cpf = node.getTextContent();
-				
+
 				node = elem.getElementsByTagName("siglaSexo").item(0);
 				String siglaSexo = node.getTextContent();
+
+				node = elem.getElementsByTagName("urlRedeSocial").item(0);
+				NodeList a = node.getChildNodes();
+				for (int j = 0; j < a.getLength(); j++) {
+
+					String urlRedeSocial = a.item(j).getTextContent();
+
+					if (urlRedeSocial != null && urlRedeSocial != "" && !urlRedeSocial.contains("\n")
+							&& !urlRedeSocial.contains("\t")) {
+
+						UrlRedeSocial rede = new UrlRedeSocial();
+
+						rede.setIdDeputado(id);
+						rede.setUrl(urlRedeSocial);
+
+						System.out.println(rede);
+
+						redes.add(rede);
+					}
+
+				}
 				
+				/*
+				node = elem.getElementsByTagName("urlWebsite").item(0);
+				NodeList b = node.getChildNodes();
+				for (int j = 0; j < b.getLength(); j++) {
+
+					String urlWebsite = b.item(j).getTextContent();
+
+					if (urlWebsite != null && urlWebsite != "" && !urlWebsite.contains("\n")
+							&& !urlWebsite.contains("\t")) {
+
+						UrlWebsite site = new UrlWebsite();
+
+						site.setIdDeputado(id);
+						site.setUrl(urlRedeSocial);
+
+						System.out.println(site);
+
+						sites.add(site);
+					}
+
+				}
+				*/
+
 				node = elem.getElementsByTagName("dataNascimento").item(0);
 				String dataNasc = node.getTextContent();
 				Date dataNascimento = null;
-				if(!dataNasc.isEmpty())
+				if (!dataNasc.isEmpty())
 					dataNascimento = Date.valueOf(dataNasc);
-				
+
 				node = elem.getElementsByTagName("dataFalecimento").item(0);
 				String dataFale = node.getTextContent();
 				Date dataFalecimento = null;
-				if(!dataFale.isEmpty())
+				if (!dataFale.isEmpty())
 					dataFalecimento = Date.valueOf(dataFale);
-				
+
 				node = elem.getElementsByTagName("ufNascimento").item(0);
 				String ufNascimento = node.getTextContent();
-				
+
 				node = elem.getElementsByTagName("municipioNascimento").item(0);
 				String municipioNascimento = node.getTextContent();
-				
+
 				d.setId(id);
 				d.setUri(uri);
 				d.setNome(nome);
@@ -104,15 +152,18 @@ public class DeputadoHandler {
 				d.setDataFalecimento(dataFalecimento);
 				d.setUfNascimento(ufNascimento);
 				d.setMunicipioNascimento(municipioNascimento);
-				
-				deputados.add(d);
-				System.out.println(d);
 
+				deputados.add(d);
+				// System.out.println(d);
 			}
 		}
 
 		return deputados;
-		
+
+	}
+
+	public List<UrlRedeSocial> getRedes() {
+		return redes;
 	}
 
 }

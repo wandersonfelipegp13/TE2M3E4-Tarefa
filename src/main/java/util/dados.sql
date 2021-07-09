@@ -10,13 +10,16 @@ CREATE TABLE legislatura (
 	dataInicio DATE NOT NULL,
 	dataFim DATE NOT NULL,
 	anoEleicao INT NOT NULL
-) ENGINE=InnoDb charset=utf8 COLLATE utf8_unicode_ci;
+);
 
 CREATE TABLE urlRedeSocial (
-	id_dep VARCHAR(100) PRIMARY KEY NOT NULL,
-	url VARCHAR(100) NOT NULL
+	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	url VARCHAR(100) NOT NULL,
+	id_deputado INT NOT NULL,
 	
-) ENGINE=InnoDb charset=utf8 COLLATE utf8_unicode_ci;
+	CONSTRAINT fk_idDeputado FOREIGN KEY (id_deputado) REFERENCES deputado(id)
+	
+);
 
 CREATE TABLE deputado (
 	
@@ -36,6 +39,6 @@ CREATE TABLE deputado (
     CONSTRAINT fk_LegislaturaInicial FOREIGN KEY (idLegislaturaInicial) REFERENCES Legislatura (idLegislatura),
     CONSTRAINT fk_LegislaturaFinal FOREIGN KEY (idLegislaturaFinal) REFERENCES Legislatura (idLegislatura)
     
-) ENGINE=InnoDb charset=utf8 COLLATE utf8_unicode_ci;
+);
 
-
+-- ENGINE=InnoDb charset=utf8 COLLATE utf8_unicode_ci;

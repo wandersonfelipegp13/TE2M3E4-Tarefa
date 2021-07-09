@@ -4,6 +4,10 @@ public class UrlWebsite {
 	private int id;
 	private String url;
 
+	public UrlWebsite() {
+		super();
+	}
+	
 	public UrlWebsite(int id, String url) {
 		super();
 		this.setId(id);
