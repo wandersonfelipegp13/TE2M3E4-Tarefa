@@ -9,23 +9,16 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
 import dao.DeputadoDAO;
-import dao.UrlRedeSocialDAO;
 import modelo.Deputado;
-import modelo.UrlRedeSocial;
-// import modelo.UrlWebsite;
 import xmlhandler.DeputadoHandler;
 
-public class PopularDeputado {
+public class PopularUrlRedeSocial {
 	
 	private List<Deputado> deps;
-	private List<UrlRedeSocial> redes;
-	// private List<UrlWebsite> sites;
 
 	private void pegaDados() {
 		
 		deps = new ArrayList<Deputado>();
-		redes = new ArrayList<UrlRedeSocial>();
-		// sites = new ArrayList<UrlWebsite>();
 
 		try {
 
@@ -34,8 +27,6 @@ public class PopularDeputado {
 			dom.fazerParsing("src/main/java/files/deputados.xml");
 
 			deps = dom.getDeputados();
-			redes = dom.getRedes();
-			// sites = dom.getSites();
 			
 		} catch (ParserConfigurationException | SAXException | IOException e) {
 			StringBuilder msg = new StringBuilder();
@@ -51,26 +42,14 @@ public class PopularDeputado {
 		
 		this.pegaDados();
 		
-		DeputadoDAO daoDep = new DeputadoDAO();
-		daoDep.setup();
-		for (int i = 0; i < deps.size(); i++)
-			daoDep.create(deps.get(i));
-		daoDep.exit();
+		DeputadoDAO dao = new DeputadoDAO();
 		
-		UrlRedeSocialDAO daoRede = new UrlRedeSocialDAO();
-		daoRede.setup();
-		for (int i = 0; i < redes.size(); i++) {
-			daoRede.create(redes.get(i));
-			System.out.println(redes.get(i).getUrl() + "\n");
-		}
-		daoRede.exit();
+		dao.setup();
 		
-		/*
 		for (int i = 0; i < deps.size(); i++)
 			dao.create(deps.get(i));
-		*/
 		
-		
+		dao.exit();
 	}
 
 }

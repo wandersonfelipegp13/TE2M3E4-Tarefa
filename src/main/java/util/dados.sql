@@ -14,7 +14,7 @@ CREATE TABLE legislatura (
 
 CREATE TABLE urlRedeSocial (
 	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	url VARCHAR(100) NOT NULL,
+	url VARCHAR(800) NOT NULL,
 	id_deputado INT NOT NULL,
 	
 	CONSTRAINT fk_idDeputado FOREIGN KEY (id_deputado) REFERENCES deputado(id)

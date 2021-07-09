@@ -93,8 +93,6 @@ public class DeputadoHandler {
 						rede.setIdDeputado(id);
 						rede.setUrl(urlRedeSocial);
 
-						System.out.println(rede);
-
 						redes.add(rede);
 					}
 
@@ -111,10 +109,8 @@ public class DeputadoHandler {
 
 						UrlWebsite site = new UrlWebsite();
 
-						site.setId(id);
+						site.setIdDeputado(id);
 						site.setUrl(urlWebsite);
-
-						System.out.println(site);
 
 						sites.add(site);
 					}
@@ -153,7 +149,7 @@ public class DeputadoHandler {
 				d.setMunicipioNascimento(municipioNascimento);
 
 				deputados.add(d);
-				// System.out.println(d);
+				
 			}
 		}
 

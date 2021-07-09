@@ -8,23 +8,27 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
-import modelo.Deputado;
-import modelo.UrlRedeSocial;
+// import modelo.Deputado;
+// import modelo.UrlRedeSocial;
 import modelo.UrlWebsite;
 
 public class ProcessaDeputadoTeste {
 
 	public static void main(String[] args) {
 
-		List<Deputado> deps = new ArrayList<Deputado>();
-		List<UrlRedeSocial> redes = new ArrayList<UrlRedeSocial>();
+		// List<Deputado> deps = new ArrayList<Deputado>();
+		// List<UrlRedeSocial> redes = new ArrayList<UrlRedeSocial>();
 		List<UrlWebsite> sites = new ArrayList<UrlWebsite>();
 
 		try {
 
 			DeputadoHandler dom = new DeputadoHandler();
 
-			deps = dom.fazerParsing("src/main/java/files/deputados.xml");
+			dom.fazerParsing("src/main/java/files/deputados.xml");
+
+			// deps = dom.getDeputados();
+			// redes = dom.getRedes();
+			sites = dom.getSites();
 
 		} catch (ParserConfigurationException | SAXException | IOException e) {
 			StringBuilder msg = new StringBuilder();
@@ -35,10 +39,13 @@ public class ProcessaDeputadoTeste {
 		}
 
 		// for (int i = 0; i < deps.size(); i++)
-			// System.out.println(deps.get(i).toString());
-		
-		for (int i = 0; i < redes.size(); i++)
-			System.out.println(redes.get(i).toString());
+		// System.out.println(deps.get(i).toString());
+
+		// for (int i = 0; i < redes.size(); i++)
+		// System.out.println(redes.get(i).toString());
+
+		for (int i = 0; i < sites.size(); i++)
+			System.out.println(sites.get(i).toString());
 
 	}
 }
