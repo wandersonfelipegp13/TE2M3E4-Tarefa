@@ -26,10 +26,11 @@ public class DeputadoHandler {
 	private List<UrlRedeSocial> redes;
 	private List<UrlWebsite> sites;
 
-	public List<Deputado> fazerParsing(String pathArq) throws SAXException, IOException, ParserConfigurationException {
+	public void fazerParsing(String pathArq) throws SAXException, IOException, ParserConfigurationException {
 
 		deputados = new ArrayList<Deputado>();
 		redes = new ArrayList<UrlRedeSocial>();
+		sites = new ArrayList<UrlWebsite>();
 
 		File xmlFile = new File(pathArq);
 
@@ -99,7 +100,6 @@ public class DeputadoHandler {
 
 				}
 				
-				/*
 				node = elem.getElementsByTagName("urlWebsite").item(0);
 				NodeList b = node.getChildNodes();
 				for (int j = 0; j < b.getLength(); j++) {
@@ -111,8 +111,8 @@ public class DeputadoHandler {
 
 						UrlWebsite site = new UrlWebsite();
 
-						site.setIdDeputado(id);
-						site.setUrl(urlRedeSocial);
+						site.setId(id);
+						site.setUrl(urlWebsite);
 
 						System.out.println(site);
 
@@ -120,7 +120,6 @@ public class DeputadoHandler {
 					}
 
 				}
-				*/
 
 				node = elem.getElementsByTagName("dataNascimento").item(0);
 				String dataNasc = node.getTextContent();
@@ -158,12 +157,18 @@ public class DeputadoHandler {
 			}
 		}
 
-		return deputados;
-
 	}
 
 	public List<UrlRedeSocial> getRedes() {
 		return redes;
 	}
+
+	public List<Deputado> getDeputados() {
+		return deputados;
+	}
+
+	public List<UrlWebsite> getSites() {
+		return sites;
+	}	
 
 }

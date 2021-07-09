@@ -10,6 +10,7 @@ import org.xml.sax.SAXException;
 
 import modelo.Deputado;
 import modelo.UrlRedeSocial;
+import modelo.UrlWebsite;
 
 public class ProcessaDeputadoTeste {
 
@@ -17,6 +18,7 @@ public class ProcessaDeputadoTeste {
 
 		List<Deputado> deps = new ArrayList<Deputado>();
 		List<UrlRedeSocial> redes = new ArrayList<UrlRedeSocial>();
+		List<UrlWebsite> sites = new ArrayList<UrlWebsite>();
 
 		try {
 
