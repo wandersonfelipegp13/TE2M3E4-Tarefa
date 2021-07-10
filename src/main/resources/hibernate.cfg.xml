@@ -15,6 +15,7 @@
     <mapping class="modelo.Legislatura" />
     <mapping class="modelo.UrlRedeSocial" />
     <mapping class="modelo.UrlWebsite" />
+    <mapping class="modelo.Ocupacao" />
      
   </session-factory>
 </hibernate-configuration>

@@ -1,26 +1,59 @@
 package modelo;
 
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "ocupacao")
 public class Ocupacao {
 
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private int idDeputado;
+	
+	@Basic(optional = false)
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_deputado", nullable = false)
+	private Deputado deputado;
+	
+	@Column(name = "uri")
 	private String uri;
+	
+	@Column(name = "titulo")
 	private String titulo;
+	
+	@Column(name = "entidade")
 	private String entidade;
+	
+	@Column(name = "entidade_uf")
 	private String entidadeUF;
+	
+	@Column(name = "entidade_pais")
 	private String entidadePais;
+	
+	@Column(name = "ano_inicio")
 	private int anoInicio;
+	
+	@Column(name = "ano_fi")
 	private int anoFim;
 
 	public Ocupacao() {
 		super();
 	}
 
-	public Ocupacao(int id, int idDeputado, String uri, String titulo, String entidade, String entidadeUF,
+	public Ocupacao(Deputado deputado, String uri, String titulo, String entidade, String entidadeUF,
 			String entidadePais, int anoInicio, int anoFim) {
 		super();
-		this.setId(id);
-		this.setIdDeputado(idDeputado);
+		this.setDeputado(deputado);
 		this.setUri(uri);
 		this.setTitulo(titulo);
 		this.setEntidade(entidade);
@@ -29,11 +62,12 @@ public class Ocupacao {
 		this.setAnoInicio(anoInicio);
 		this.setAnoFim(anoFim);
 	}
-
-	public Ocupacao(int idDeputado, String uri, String titulo, String entidade, String entidadeUF, String entidadePais,
-			int anoInicio, int anoFim) {
+	
+	public Ocupacao(int id, Deputado deputado, String uri, String titulo, String entidade, String entidadeUF,
+			String entidadePais, int anoInicio, int anoFim) {
 		super();
-		this.setIdDeputado(idDeputado);
+		this.setId(id);
+		this.setDeputado(deputado);
 		this.setUri(uri);
 		this.setTitulo(titulo);
 		this.setEntidade(entidade);
@@ -51,12 +85,12 @@ public class Ocupacao {
 		this.id = id;
 	}
 
-	public int getIdDeputado() {
-		return idDeputado;
+	public Deputado getDeputado() {
+		return deputado;
 	}
 
-	public void setIdDeputado(int idDeputado) {
-		this.idDeputado = idDeputado;
+	public void setDeputado(Deputado deputado) {
+		this.deputado = deputado;
 	}
 
 	public String getUri() {
@@ -116,16 +150,23 @@ public class Ocupacao {
 	}
 
 	@Override
+	public String toString() {
+		return "Ocupacao [id=" + id + ", deputado=" + deputado + ", uri=" + uri + ", titulo=" + titulo + ", entidade="
+				+ entidade + ", entidadeUF=" + entidadeUF + ", entidadePais=" + entidadePais + ", anoInicio="
+				+ anoInicio + ", anoFim=" + anoFim + "]";
+	}
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + anoFim;
 		result = prime * result + anoInicio;
+		result = prime * result + ((deputado == null) ? 0 : deputado.hashCode());
 		result = prime * result + ((entidade == null) ? 0 : entidade.hashCode());
 		result = prime * result + ((entidadePais == null) ? 0 : entidadePais.hashCode());
 		result = prime * result + ((entidadeUF == null) ? 0 : entidadeUF.hashCode());
 		result = prime * result + id;
-		result = prime * result + idDeputado;
 		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
 		result = prime * result + ((uri == null) ? 0 : uri.hashCode());
 		return result;
@@ -144,6 +185,11 @@ public class Ocupacao {
 			return false;
 		if (anoInicio != other.anoInicio)
 			return false;
+		if (deputado == null) {
+			if (other.deputado != null)
+				return false;
+		} else if (!deputado.equals(other.deputado))
+			return false;
 		if (entidade == null) {
 			if (other.entidade != null)
 				return false;
@@ -161,8 +207,6 @@ public class Ocupacao {
 			return false;
 		if (id != other.id)
 			return false;
-		if (idDeputado != other.idDeputado)
-			return false;
 		if (titulo == null) {
 			if (other.titulo != null)
 				return false;
@@ -174,13 +218,6 @@ public class Ocupacao {
 		} else if (!uri.equals(other.uri))
 			return false;
 		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Ocupacao [id=" + id + ", idDeputado=" + idDeputado + ", uri=" + uri + ", titulo=" + titulo
-				+ ", entidade=" + entidade + ", entidadeUF=" + entidadeUF + ", entidadePais=" + entidadePais
-				+ ", anoInicio=" + anoInicio + ", anoFim=" + anoFim + "]";
-	}
+	}	
 
 }

@@ -50,4 +50,20 @@ CREATE TABLE deputado (
     
 );
 
+CREATE TABLE ocupacao (
+	
+	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	id_deputado INT NOT NULL,
+	uri VARCHAR(800) NOT NULL,
+	titulo VARCHAR(300),
+	entidade VARCHAR(300),
+	entidade_uf CHAR(2),
+	entidade_pais VARCHAR(100),
+	ano_inicio INT,
+	ano_fim INT,
+	
+	CONSTRAINT fk_deputado_ocupacao FOREIGN KEY (id_deputado) REFERENCES deputado (id)
+	
+);
+
 -- ENGINE=InnoDb charset=utf8 COLLATE utf8_unicode_ci;
