@@ -19,39 +19,39 @@ public class Ocupacao {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@Basic(optional = false)
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_deputado", nullable = false)
 	private Deputado deputado;
-	
+
 	@Column(name = "uri")
 	private String uri;
-	
+
 	@Column(name = "titulo")
 	private String titulo;
-	
+
 	@Column(name = "entidade")
 	private String entidade;
-	
+
 	@Column(name = "entidade_uf")
 	private String entidadeUF;
-	
+
 	@Column(name = "entidade_pais")
 	private String entidadePais;
-	
+
 	@Column(name = "ano_inicio")
-	private int anoInicio;
-	
-	@Column(name = "ano_fi")
-	private int anoFim;
+	private String anoInicio;
+
+	@Column(name = "ano_fim")
+	private String anoFim;
 
 	public Ocupacao() {
 		super();
 	}
 
 	public Ocupacao(Deputado deputado, String uri, String titulo, String entidade, String entidadeUF,
-			String entidadePais, int anoInicio, int anoFim) {
+			String entidadePais, String anoInicio, String anoFim) {
 		super();
 		this.setDeputado(deputado);
 		this.setUri(uri);
@@ -62,9 +62,9 @@ public class Ocupacao {
 		this.setAnoInicio(anoInicio);
 		this.setAnoFim(anoFim);
 	}
-	
+
 	public Ocupacao(int id, Deputado deputado, String uri, String titulo, String entidade, String entidadeUF,
-			String entidadePais, int anoInicio, int anoFim) {
+			String entidadePais, String anoInicio, String anoFim) {
 		super();
 		this.setId(id);
 		this.setDeputado(deputado);
@@ -75,6 +75,13 @@ public class Ocupacao {
 		this.setEntidadePais(entidadePais);
 		this.setAnoInicio(anoInicio);
 		this.setAnoFim(anoFim);
+	}
+
+	@Override
+	public String toString() {
+		return "Ocupacao [id=" + id + ", deputado=" + deputado + ", uri=" + uri + ", titulo=" + titulo + ", entidade="
+				+ entidade + ", entidadeUF=" + entidadeUF + ", entidadePais=" + entidadePais + ", anoInicio="
+				+ anoInicio + ", anoFim=" + anoFim + "]";
 	}
 
 	public int getId() {
@@ -133,35 +140,28 @@ public class Ocupacao {
 		this.entidadePais = entidadePais;
 	}
 
-	public int getAnoInicio() {
+	public String getAnoInicio() {
 		return anoInicio;
 	}
 
-	public void setAnoInicio(int anoInicio) {
+	public void setAnoInicio(String anoInicio) {
 		this.anoInicio = anoInicio;
 	}
 
-	public int getAnoFim() {
+	public String getAnoFim() {
 		return anoFim;
 	}
 
-	public void setAnoFim(int anoFim) {
+	public void setAnoFim(String anoFim) {
 		this.anoFim = anoFim;
-	}
-
-	@Override
-	public String toString() {
-		return "Ocupacao [id=" + id + ", deputado=" + deputado + ", uri=" + uri + ", titulo=" + titulo + ", entidade="
-				+ entidade + ", entidadeUF=" + entidadeUF + ", entidadePais=" + entidadePais + ", anoInicio="
-				+ anoInicio + ", anoFim=" + anoFim + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + anoFim;
-		result = prime * result + anoInicio;
+		result = prime * result + ((anoFim == null) ? 0 : anoFim.hashCode());
+		result = prime * result + ((anoInicio == null) ? 0 : anoInicio.hashCode());
 		result = prime * result + ((deputado == null) ? 0 : deputado.hashCode());
 		result = prime * result + ((entidade == null) ? 0 : entidade.hashCode());
 		result = prime * result + ((entidadePais == null) ? 0 : entidadePais.hashCode());
@@ -181,9 +181,15 @@ public class Ocupacao {
 		if (getClass() != obj.getClass())
 			return false;
 		Ocupacao other = (Ocupacao) obj;
-		if (anoFim != other.anoFim)
+		if (anoFim == null) {
+			if (other.anoFim != null)
+				return false;
+		} else if (!anoFim.equals(other.anoFim))
 			return false;
-		if (anoInicio != other.anoInicio)
+		if (anoInicio == null) {
+			if (other.anoInicio != null)
+				return false;
+		} else if (!anoInicio.equals(other.anoInicio))
 			return false;
 		if (deputado == null) {
 			if (other.deputado != null)
@@ -218,6 +224,6 @@ public class Ocupacao {
 		} else if (!uri.equals(other.uri))
 			return false;
 		return true;
-	}	
+	}
 
 }

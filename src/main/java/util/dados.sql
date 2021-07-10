@@ -59,8 +59,8 @@ CREATE TABLE ocupacao (
 	entidade VARCHAR(300),
 	entidade_uf CHAR(2),
 	entidade_pais VARCHAR(100),
-	ano_inicio INT,
-	ano_fim INT,
+	ano_inicio VARCHAR(10),
+	ano_fim VARCHAR(10),
 	
 	CONSTRAINT fk_deputado_ocupacao FOREIGN KEY (id_deputado) REFERENCES deputado (id)
 	
