@@ -51,7 +51,7 @@ public class ViewLegislatura extends JFrame {
 	 * Create the frame.
 	 */
 	public ViewLegislatura() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 487, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -133,6 +133,15 @@ public class ViewLegislatura extends JFrame {
 		panel.add(btnNewButton);
 		
 		JButton btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dadosLeg();
+				LegislaturaDAO dao = new LegislaturaDAO();
+				dao.setup();
+				dao.update(l);
+				dao.exit();
+			}
+		});
 		btnAtualizar.setBounds(245, 179, 179, 23);
 		panel.add(btnAtualizar);
 		
@@ -150,6 +159,15 @@ public class ViewLegislatura extends JFrame {
 		panel.add(btnBuscar);
 		
 		JButton btnNewButton_1_1 = new JButton("Deletar");
+		btnNewButton_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dadosLeg();
+				LegislaturaDAO dao = new LegislaturaDAO();
+				dao.setup();
+				dao.delete(l);
+				dao.exit();
+			}
+		});
 		btnNewButton_1_1.setBounds(245, 213, 179, 23);
 		panel.add(btnNewButton_1_1);
 	}
