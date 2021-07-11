@@ -1,16 +1,21 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import dao.UrlWebsiteDAO;
+import modelo.UrlWebsite;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ViewSites extends JFrame {
 
@@ -22,6 +27,7 @@ public class ViewSites extends JFrame {
 	private JTextField tfId;
 	private JTextField tfDep;
 	private JTextField tfUrl;
+	private UrlWebsite site;
 
 	/**
 	 * Launch the application.
@@ -91,6 +97,15 @@ public class ViewSites extends JFrame {
 		panel.add(tfUrl);
 		
 		JButton btnNewButton = new JButton("Adicionar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dados();
+				UrlWebsiteDAO dao = new UrlWebsiteDAO();
+				dao.setup();
+				dao.create(site);
+				dao.exit();
+			}
+		});
 		btnNewButton.setBounds(53, 133, 167, 23);
 		panel.add(btnNewButton);
 		
@@ -105,5 +120,12 @@ public class ViewSites extends JFrame {
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.setBounds(53, 167, 167, 23);
 		panel.add(btnBuscar);
+	}
+	
+	private void dados() {
+		site = new UrlWebsite();
+		site.setId(Integer.parseInt(tfId.getText()));
+		site.setIdDeputado(Integer.parseInt(tfDep.getText()));
+		site.setUrl(tfUrl.getText());
 	}
 }

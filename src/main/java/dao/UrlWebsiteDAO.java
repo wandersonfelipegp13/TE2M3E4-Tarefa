@@ -53,5 +53,26 @@ public class UrlWebsiteDAO {
 		}
 
 	}
+	
+	public void update(UrlWebsite urlWebsite) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		session.update(urlWebsite);
+
+		session.getTransaction().commit();
+		session.close();
+	}
+	
+	public void delete(UrlWebsite urlWebsite) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		session.delete(urlWebsite);
+
+		session.getTransaction().commit();
+		session.close();
+	}
+
 
 }
