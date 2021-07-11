@@ -57,6 +57,12 @@ public class OcupacaoDAO {
 	}
 	
 	public void update(Ocupacao ocupacao) {
+		
+		DeputadoDAO depDAO = new DeputadoDAO();
+		depDAO.setup();
+		ocupacao.setDeputado(depDAO.read(ocupacao.getDeputado().getId()));
+		depDAO.exit();
+		
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 

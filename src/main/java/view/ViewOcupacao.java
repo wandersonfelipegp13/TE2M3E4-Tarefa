@@ -181,6 +181,15 @@ public class ViewOcupacao extends JFrame {
 		panel.add(btnNewButton);
 		
 		JButton btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dados();
+				OcupacaoDAO dao = new OcupacaoDAO();
+				dao.setup();
+				dao.update(o);
+				dao.exit();
+			}
+		});
 		btnAtualizar.setBounds(244, 258, 158, 23);
 		panel.add(btnAtualizar);
 		
