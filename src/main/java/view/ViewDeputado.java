@@ -206,6 +206,12 @@ public class ViewDeputado extends JFrame {
 		JButton btUp = new JButton("Atualizar");
 		btUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				dadosDep();
+				
+				DeputadoDAO dao = new DeputadoDAO();
+				dao.setup();
+				dao.update(deputado);
+				dao.exit();
 				
 			}
 		});

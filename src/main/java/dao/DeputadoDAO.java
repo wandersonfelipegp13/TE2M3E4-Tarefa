@@ -54,5 +54,16 @@ public class DeputadoDAO {
 
 	}
 	
+	public void update(Deputado dep) {
+		
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		session.update(dep);
+
+		session.getTransaction().commit();
+		session.close();
+	}
+	
 
 }
