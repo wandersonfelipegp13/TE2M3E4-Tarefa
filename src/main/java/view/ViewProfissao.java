@@ -124,6 +124,15 @@ public class ViewProfissao extends JFrame {
 		panel.add(btnNewButton);
 		
 		JButton btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dados();
+				ProfissaoDAO dao = new ProfissaoDAO();
+				dao.setup();
+				dao.update(p);
+				dao.exit();
+			}
+		});
 		btnAtualizar.setBounds(233, 227, 167, 23);
 		panel.add(btnAtualizar);
 		
