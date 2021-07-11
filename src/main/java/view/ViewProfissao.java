@@ -137,6 +137,15 @@ public class ViewProfissao extends JFrame {
 		panel.add(btnAtualizar);
 		
 		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ProfissaoDAO dao = new ProfissaoDAO();
+				dao.setup();
+				p = dao.read(Integer.parseInt(tfId.getText()));
+				dao.exit();
+				set();
+			}
+		});
 		btnBuscar.setBounds(43, 261, 167, 23);
 		panel.add(btnBuscar);
 		
@@ -175,6 +184,15 @@ public class ViewProfissao extends JFrame {
 		p.setCodTipoProfissao(Integer.parseInt(tfProf.getText()));
 		p.setTitulo(tfTitle.getText());
 		p.setIdDeputado(Integer.parseInt(tfDep.getText()));	
+	}
+	
+	private void set() {
+		tfId.setText(p.getId() + "");
+		tfUri.setText(p.getUri());
+		tfData.setText(p.getDataHora());
+		tfProf.setText(p.getCodTipoProfissao() + "");
+		tfTitle.setText(p.getTitulo());
+		tfDep.setText(p.getIdDeputado() + "");	
 	}
 
 }
