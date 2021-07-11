@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import popularBD.PopularBD;
+
 import java.awt.Color;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -97,6 +100,15 @@ public class ViewMenu extends JFrame {
 		});
 		mnNewMenu.add(mntmNewMenuItem_5);
 		
+		JMenuItem mntmNewMenuItem_6 = new JMenuItem("Profissões");
+		mntmNewMenuItem_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ViewProfissao p = new ViewProfissao();
+				p.setVisible(true);
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_6);
+		
 		JMenu mnNewMenu_1 = new JMenu("Ajuda");
 		menuBar.add(mnNewMenu_1);
 		
@@ -114,6 +126,11 @@ public class ViewMenu extends JFrame {
 		panel.setLayout(null);
 		
 		JButton btnNewButton = new JButton("Popular BD");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PopularBD.main(null);
+			}
+		});
 		btnNewButton.setBounds(158, 109, 117, 23);
 		panel.add(btnNewButton);
 	}
