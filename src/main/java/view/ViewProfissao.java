@@ -1,24 +1,36 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import dao.ProfissaoDAO;
+import modelo.Profissao;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ViewProfissao extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField tfId;
 	private JTextField tfProf;
 	private JTextField tfTitle;
 	private JTextField tfDep;
+	private Profissao p;
+	private JTextField tfUri;
+	private JTextField tfData;
 
 	/**
 	 * Launch the application.
@@ -42,7 +54,7 @@ public class ViewProfissao extends JFrame {
 	public ViewProfissao() {
 		setTitle("Gerenciar Profissões");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 347);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -50,7 +62,7 @@ public class ViewProfissao extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.DARK_GRAY);
-		panel.setBounds(0, 0, 434, 261);
+		panel.setBounds(0, 0, 434, 308);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -99,20 +111,61 @@ public class ViewProfissao extends JFrame {
 		panel.add(tfDep);
 		
 		JButton btnNewButton = new JButton("Adicionar");
-		btnNewButton.setBounds(43, 169, 167, 23);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dados();
+				ProfissaoDAO dao = new ProfissaoDAO();
+				dao.setup();
+				dao.create(p);
+				dao.exit();
+			}
+		});
+		btnNewButton.setBounds(43, 227, 167, 23);
 		panel.add(btnNewButton);
 		
 		JButton btnAtualizar = new JButton("Atualizar");
-		btnAtualizar.setBounds(233, 169, 167, 23);
+		btnAtualizar.setBounds(233, 227, 167, 23);
 		panel.add(btnAtualizar);
 		
 		JButton btnBuscar = new JButton("Buscar");
-		btnBuscar.setBounds(43, 203, 167, 23);
+		btnBuscar.setBounds(43, 261, 167, 23);
 		panel.add(btnBuscar);
 		
 		JButton btnDelete = new JButton("Delete");
-		btnDelete.setBounds(233, 203, 167, 23);
+		btnDelete.setBounds(233, 261, 167, 23);
 		panel.add(btnDelete);
+		
+		tfUri = new JTextField();
+		tfUri.setColumns(10);
+		tfUri.setBounds(130, 145, 270, 20);
+		panel.add(tfUri);
+		
+		JLabel lblUri = new JLabel("URI");
+		lblUri.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblUri.setForeground(Color.WHITE);
+		lblUri.setBounds(10, 148, 110, 14);
+		panel.add(lblUri);
+		
+		tfData = new JTextField();
+		tfData.setColumns(10);
+		tfData.setBounds(130, 176, 270, 20);
+		panel.add(tfData);
+		
+		JLabel lblDataHora = new JLabel("Data Hora");
+		lblDataHora.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblDataHora.setForeground(Color.WHITE);
+		lblDataHora.setBounds(10, 179, 110, 14);
+		panel.add(lblDataHora);
+	}
+	
+	private void dados() {
+		p = new Profissao();
+		p.setId(Integer.parseInt(tfId.getText()));
+		p.setUri(tfUri.getText());
+		p.setDataHora(tfData.getText());
+		p.setCodTipoProfissao(Integer.parseInt(tfProf.getText()));
+		p.setTitulo(tfTitle.getText());
+		p.setIdDeputado(Integer.parseInt(tfDep.getText()));	
 	}
 
 }

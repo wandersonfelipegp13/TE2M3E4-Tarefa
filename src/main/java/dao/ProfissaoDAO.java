@@ -40,18 +40,27 @@ public class ProfissaoDAO {
 	}
 
 	public void create(Profissao profissao) {
-
-		// if (profissao != null && read(profissao.getIdDeputado()) == null) {
-
-			Session session = sessionFactory.openSession();
-			session.beginTransaction();
-
-			session.save(profissao);
-
-			session.getTransaction().commit();
-			session.close();
-		// }
-
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.save(profissao);
+		session.getTransaction().commit();
+		session.close();
+	}
+	
+	public void update(Profissao profissao) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.update(profissao);
+		session.getTransaction().commit();
+		session.close();
+	}
+	
+	public void delete(Profissao profissao) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.delete(profissao);
+		session.getTransaction().commit();
+		session.close();
 	}
 
 }
