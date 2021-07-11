@@ -11,6 +11,7 @@ import dao.DeputadoDAO;
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
@@ -234,7 +235,12 @@ public class ViewDeputado extends JFrame {
 				dao.setup();
 				deputado = dao.read(Integer.parseInt(tfID.getText()));
 				dao.exit();
-				infDep();
+				if(deputado != null) {
+					infDep();
+				} else {
+					JOptionPane.showMessageDialog(null, "Deputado não encontrado!");
+				}
+								
 			}
 		});
 		btRead.setBounds(24, 321, 249, 23);
@@ -257,6 +263,7 @@ public class ViewDeputado extends JFrame {
 	}
 	
 	private void dadosDep() {
+		
 		deputado = new Deputado();
 		deputado.setId(Integer.parseInt(tfID.getText()));
 		deputado.setUri(tfUri.getText());
@@ -270,21 +277,27 @@ public class ViewDeputado extends JFrame {
 		deputado.setDataFalecimento(tfDataFalec.getText());
 		deputado.setUfNascimento(cbUf.getSelectedItem().toString());
 		deputado.setMunicipioNascimento(tfMuni.getText());
+		
 	}
 	
 	private void infDep() {
+		
 		tfID.setText(deputado.getId() + "");
 		tfUri.setText(deputado.getUri());
 		tfNome.setText(deputado.getNome());
 		tfLegIni.setText(deputado.getIdLegislaturaInicial() + "");
-		deputado.setIdLegislaturaFinal(Integer.parseInt(tfLegFin.getText()));
-		deputado.setNomeCivil(tfNomeCivil.getText());
-		deputado.setCpf(tfCpf.getText());
-		deputado.setSiglaSexo(cbSexo.getSelectedItem().toString());
-		deputado.setDataNascimento(tfDataNasc.getText());
-		deputado.setDataFalecimento(tfDataFalec.getText());
-		deputado.setUfNascimento(cbUf.getSelectedItem().toString());
-		deputado.setMunicipioNascimento(tfMuni.getText());
+		tfLegFin.setText(deputado.getIdLegislaturaFinal() + "");
+		tfNomeCivil.setText(deputado.getNomeCivil());
+		tfCpf.setText(deputado.getCpf());
+		
+		cbSexo.setSelectedItem(deputado.getSiglaSexo());
+			
+		tfDataNasc.setText(deputado.getDataNascimento());
+		tfDataFalec.setText(deputado.getDataFalecimento());
+		
+		cbUf.setSelectedItem(deputado.getUfNascimento());
+		
+		tfMuni.setText(deputado.getMunicipioNascimento());
 		
 	}
 }
