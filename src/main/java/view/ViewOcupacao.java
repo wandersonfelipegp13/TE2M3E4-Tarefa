@@ -1,16 +1,24 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import dao.OcupacaoDAO;
+import modelo.Deputado;
+import modelo.Ocupacao;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class ViewOcupacao extends JFrame {
 
@@ -24,10 +32,12 @@ public class ViewOcupacao extends JFrame {
 	private JTextField tfUri;
 	private JTextField tfTitulo;
 	private JTextField tfEntidade;
-	private JTextField tfUf;
 	private JTextField tfPais;
 	private JTextField tfAnoIni;
 	private JTextField tfAnoFim;
+	private JComboBox<String> cbUf;
+	private Ocupacao o;
+	
 
 	/**
 	 * Launch the application.
@@ -142,11 +152,6 @@ public class ViewOcupacao extends JFrame {
 		tfEntidade.setBounds(144, 127, 258, 20);
 		panel.add(tfEntidade);
 		
-		tfUf = new JTextField();
-		tfUf.setColumns(10);
-		tfUf.setBounds(144, 152, 258, 20);
-		panel.add(tfUf);
-		
 		tfPais = new JTextField();
 		tfPais.setColumns(10);
 		tfPais.setBounds(144, 177, 258, 20);
@@ -163,6 +168,15 @@ public class ViewOcupacao extends JFrame {
 		panel.add(tfAnoFim);
 		
 		JButton btnNewButton = new JButton("Adicionar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dados();
+				OcupacaoDAO dao = new OcupacaoDAO();
+				dao.setup();
+				dao.create(o);
+				dao.exit();
+			}
+		});
 		btnNewButton.setBounds(64, 258, 158, 23);
 		panel.add(btnNewButton);
 		
@@ -177,6 +191,26 @@ public class ViewOcupacao extends JFrame {
 		JButton btnDeletar = new JButton("Deletar");
 		btnDeletar.setBounds(244, 292, 158, 23);
 		panel.add(btnDeletar);
+		
+		cbUf = new JComboBox<String>();
+		cbUf.setModel(new DefaultComboBoxModel<String>(new String[] {"AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"}));
+		cbUf.setBounds(144, 151, 258, 22);
+		panel.add(cbUf);
+	}
+	
+	private void dados() {
+		o = new Ocupacao();
+		o.setId(Integer.parseInt(tfId.getText()));
+		Deputado d = new Deputado();
+		d.setId(Integer.parseInt(tfDep.getText()));
+		o.setDeputado(d);
+		o.setUri(tfUri.getText());
+		o.setTitulo(tfTitulo.getText());
+		o.setEntidade(tfEntidade.getText());
+		o.setEntidadeUF(cbUf.getSelectedItem().toString());
+		o.setEntidadePais(tfPais.getText());
+		o.setAnoInicio(tfAnoIni.getText());
+		o.setAnoFim(tfAnoFim.getText());
 	}
 
 }

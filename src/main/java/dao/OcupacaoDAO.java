@@ -6,7 +6,6 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-import modelo.Deputado;
 import modelo.Ocupacao;
 
 public class OcupacaoDAO {
@@ -41,8 +40,6 @@ public class OcupacaoDAO {
 	}
 
 	public void create(Ocupacao ocupacao) {
-
-		// if (ocupacao != null && read(ocupacao.getId()) == null) {
 		
 		DeputadoDAO depDAO = new DeputadoDAO();
 		depDAO.setup();
@@ -52,27 +49,32 @@ public class OcupacaoDAO {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 
-		// session.save(ocupacao.getDeputado());
 		session.save(ocupacao);
 
 		session.getTransaction().commit();
 		session.close();
-		// }
 
 	}
+	
+	public void update(Ocupacao ocupacao) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
 
-	public static void main(String[] args) {
+		session.update(ocupacao);
 
-		OcupacaoDAO dao = new OcupacaoDAO();
-		dao.setup();
-
-		Deputado deputado = new Deputado();
-		deputado.setId(2);
-		
-		dao.create(new Ocupacao(deputado, "sola", "sola", "sola", "so", "sola", "2019", "2020"));
-
-		dao.exit();
-
+		session.getTransaction().commit();
+		session.close();
 	}
+	
+	public void delete(Ocupacao ocupacao) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		session.delete(ocupacao);
+
+		session.getTransaction().commit();
+		session.close();
+	}
+
 
 }
