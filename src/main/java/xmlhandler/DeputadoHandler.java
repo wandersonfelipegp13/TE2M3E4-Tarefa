@@ -2,7 +2,6 @@ package xmlhandler;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,7 +96,7 @@ public class DeputadoHandler {
 					}
 
 				}
-				
+
 				node = elem.getElementsByTagName("urlWebsite").item(0);
 				NodeList b = node.getChildNodes();
 				for (int j = 0; j < b.getLength(); j++) {
@@ -118,16 +117,10 @@ public class DeputadoHandler {
 				}
 
 				node = elem.getElementsByTagName("dataNascimento").item(0);
-				String dataNasc = node.getTextContent();
-				Date dataNascimento = null;
-				if (!dataNasc.isEmpty())
-					dataNascimento = Date.valueOf(dataNasc);
+				String dataNascimento = node.getTextContent();
 
 				node = elem.getElementsByTagName("dataFalecimento").item(0);
-				String dataFale = node.getTextContent();
-				Date dataFalecimento = null;
-				if (!dataFale.isEmpty())
-					dataFalecimento = Date.valueOf(dataFale);
+				String dataFalecimento = node.getTextContent();
 
 				node = elem.getElementsByTagName("ufNascimento").item(0);
 				String ufNascimento = node.getTextContent();
@@ -149,7 +142,7 @@ public class DeputadoHandler {
 				d.setMunicipioNascimento(municipioNascimento);
 
 				deputados.add(d);
-				
+
 			}
 		}
 
@@ -165,6 +158,6 @@ public class DeputadoHandler {
 
 	public List<UrlWebsite> getSites() {
 		return sites;
-	}	
+	}
 
 }

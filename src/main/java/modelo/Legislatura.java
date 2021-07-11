@@ -1,7 +1,5 @@
 package modelo;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 // import javax.persistence.GeneratedValue;
@@ -22,10 +20,10 @@ public class Legislatura {
 	private String uri;
 	
 	@Column(name = "dataInicio")
-	private Date dataInicio;
+	private String dataInicio;
 	
 	@Column(name = "dataFim")
-	private Date dataFim;
+	private String dataFim;
 	
 	@Column(name = "anoEleicao")
 	private int anoEleicao;
@@ -34,7 +32,7 @@ public class Legislatura {
 		super();
 	}
 
-	public Legislatura(int idLegislatura, String uri, Date dataInicio, Date dataFim, int anoEleicao) {
+	public Legislatura(int idLegislatura, String uri, String dataInicio, String dataFim, int anoEleicao) {
 		super();
 		this.setIdLegislatura(idLegislatura);
 		this.setUri(uri);
@@ -43,7 +41,7 @@ public class Legislatura {
 		this.setAnoEleicao(anoEleicao);
 	}
 	
-	public Legislatura(String uri, Date dataInicio, Date dataFim, int anoEleicao) {
+	public Legislatura(String uri, String dataInicio, String dataFim, int anoEleicao) {
 		super();
 		this.setUri(uri);
 		this.setDataInicio(dataInicio);
@@ -67,19 +65,19 @@ public class Legislatura {
 		this.uri = uri;
 	}
 
-	public Date getDataInicio() {
+	public String getDataInicio() {
 		return dataInicio;
 	}
 
-	public void setDataInicio(Date dataInicio) {
+	public void setDataInicio(String dataInicio) {
 		this.dataInicio = dataInicio;
 	}
 
-	public Date getDataFim() {
+	public String getDataFim() {
 		return dataFim;
 	}
 
-	public void setDataFim(Date dataFim) {
+	public void setDataFim(String dataFim) {
 		this.dataFim = dataFim;
 	}
 

@@ -2,7 +2,6 @@ package xmlhandler;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
@@ -19,8 +18,6 @@ import modelo.Legislatura;
 public class LegislaturaHandler {
 
 	private List<Legislatura> legislaturas;
-	// private List<UrlRedeSocial> redes;
-	// private List<UrlWebsite> webs;
 
 	public List<Legislatura> fazerParsing(String pathArq)
 			throws SAXException, IOException, ParserConfigurationException {
@@ -56,10 +53,10 @@ public class LegislaturaHandler {
 				String uri = node.getTextContent();
 				
 				node = elem.getElementsByTagName("dataInicio").item(0);
-				Date dataInicio = Date.valueOf(node.getTextContent());
+				String dataInicio = node.getTextContent();
 				
 				node = elem.getElementsByTagName("dataFim").item(0);
-				Date dataFim = Date.valueOf(node.getTextContent());
+				String dataFim = node.getTextContent();
 				
 				node = elem.getElementsByTagName("anoEleicao").item(0);
 				int anoEleicao = Integer.parseInt(node.getTextContent());

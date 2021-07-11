@@ -83,7 +83,7 @@ public class OcupacaoHandler {
 				o.setAnoInicio(anoInicio);
 				o.setAnoFim(anoFim);
 				this.ocupacoes.add(o);
-				System.out.println(o);
+				// System.out.println(o);
 
 			}
 		}

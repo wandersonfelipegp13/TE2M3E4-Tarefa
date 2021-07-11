@@ -1,14 +1,13 @@
 package dao;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.hibernate.*;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-import modelo.Deputado;
+import modelo.Profissao;
 
-public class DeputadoDAO {
+public class ProfissaoDAO {
 
 	protected SessionFactory sessionFactory;
 
@@ -22,37 +21,37 @@ public class DeputadoDAO {
 			System.out.println("Erro no setup: " + ex.getMessage() + "\n");
 			StandardServiceRegistryBuilder.destroy(registry);
 		}
+
 	}
-	
+
 	public void exit() {
 		sessionFactory.close();
 	}
 
-	public Deputado read(int idDeputado) {
+	public Profissao read(int idProfissao) {
 
 		Session session = sessionFactory.openSession();
 
-		Deputado dep = session.get(Deputado.class, idDeputado);
+		Profissao p = session.get(Profissao.class, idProfissao);
 
 		session.close();
 
-		return dep;
+		return p;
 	}
 
-	public void create(Deputado deputado) {
+	public void create(Profissao profissao) {
 
-		if (deputado != null && read(deputado.getId()) == null) {
+		// if (profissao != null && read(profissao.getIdDeputado()) == null) {
 
 			Session session = sessionFactory.openSession();
 			session.beginTransaction();
 
-			session.save(deputado);
+			session.save(profissao);
 
 			session.getTransaction().commit();
 			session.close();
-		}
+		// }
 
 	}
-	
 
 }

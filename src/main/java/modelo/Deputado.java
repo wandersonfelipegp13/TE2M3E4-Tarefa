@@ -1,21 +1,27 @@
 package modelo;
 
-import java.util.Date;
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "deputado")
-public class Deputado {
+public class Deputado implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Id
 	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@Column(name = "uri")
@@ -40,10 +46,10 @@ public class Deputado {
 	private String siglaSexo;
 	
 	@Column(name = "datanascimento")
-	private Date dataNascimento;
+	private String dataNascimento;
 	
 	@Column(name = "datafalecimento")
-	private Date dataFalecimento;
+	private String dataFalecimento;
 	
 	@Column(name = "ufnascimento")
 	private String ufNascimento;
@@ -56,7 +62,7 @@ public class Deputado {
 	}
 
 	public Deputado(int id, String uri, String nome, int idLegislaturaInicial, int idLegislaturaFinal,
-			String nomeCivil, String cpf, String siglaSexo, Date dataNascimento, Date dataFalecimento,
+			String nomeCivil, String cpf, String siglaSexo, String dataNascimento, String dataFalecimento,
 			String ufNascimento, String municipioNascimento) {
 		super();
 		this.setId(id);
@@ -137,19 +143,19 @@ public class Deputado {
 		this.siglaSexo = siglaSexo;
 	}
 
-	public Date getDataNascimento() {
+	public String getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(Date dataNascimento) {
+	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public Date getDataFalecimento() {
+	public String getDataFalecimento() {
 		return dataFalecimento;
 	}
 
-	public void setDataFalecimento(Date dataFalecimento) {
+	public void setDataFalecimento(String dataFalecimento) {
 		this.dataFalecimento = dataFalecimento;
 	}
 

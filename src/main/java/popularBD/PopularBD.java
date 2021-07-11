@@ -9,6 +9,12 @@ public class PopularBD {
 		
 		PopularDeputado d = new PopularDeputado();
 		d.insereDados();
+				
+		PopularOcupacao o = new PopularOcupacao();
+		o.insereDados();
+		
+		PopularProfissao p = new PopularProfissao();
+		p.insereDados();
 
 	}
 
