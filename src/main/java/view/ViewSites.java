@@ -110,6 +110,15 @@ public class ViewSites extends JFrame {
 		panel.add(btnNewButton);
 		
 		JButton btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dados();
+				UrlWebsiteDAO dao = new UrlWebsiteDAO();
+				dao.setup();
+				dao.update(site);
+				dao.exit();
+			}
+		});
 		btnAtualizar.setBounds(230, 133, 154, 23);
 		panel.add(btnAtualizar);
 		
@@ -118,6 +127,15 @@ public class ViewSites extends JFrame {
 		panel.add(btnNewButton_1_1);
 		
 		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UrlWebsiteDAO dao = new UrlWebsiteDAO();
+				dao.setup();
+				site = dao.read(Integer.parseInt(tfId.getText()));
+				dao.exit();
+				set();
+			}
+		});
 		btnBuscar.setBounds(53, 167, 167, 23);
 		panel.add(btnBuscar);
 	}
@@ -127,5 +145,11 @@ public class ViewSites extends JFrame {
 		site.setId(Integer.parseInt(tfId.getText()));
 		site.setIdDeputado(Integer.parseInt(tfDep.getText()));
 		site.setUrl(tfUrl.getText());
+	}
+	
+	private void set() {
+		tfId.setText(site.getId() + "");
+		tfDep.setText(site.getIdDeputado() + "");
+		tfUrl.setText(site.getUrl());
 	}
 }
