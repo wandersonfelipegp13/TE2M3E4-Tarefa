@@ -150,6 +150,15 @@ public class ViewProfissao extends JFrame {
 		panel.add(btnBuscar);
 		
 		JButton btnDelete = new JButton("Delete");
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dados();
+				ProfissaoDAO dao = new ProfissaoDAO();
+				dao.setup();
+				dao.delete(p);
+				dao.exit();
+			}
+		});
 		btnDelete.setBounds(233, 261, 167, 23);
 		panel.add(btnDelete);
 		
