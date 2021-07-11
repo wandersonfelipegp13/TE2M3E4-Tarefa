@@ -11,6 +11,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JButton;
 
 public class ViewMenu extends JFrame {
 
@@ -78,6 +79,15 @@ public class ViewMenu extends JFrame {
 		});
 		mnNewMenu.add(mntmNewMenuItem);
 		
+		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Sites");
+		mntmNewMenuItem_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ViewSites s = new ViewSites();
+				s.setVisible(true);
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_4);
+		
 		JMenu mnNewMenu_1 = new JMenu("Ajuda");
 		menuBar.add(mnNewMenu_1);
 		
@@ -93,5 +103,9 @@ public class ViewMenu extends JFrame {
 		panel.setBounds(0, 0, 434, 239);
 		contentPane.add(panel);
 		panel.setLayout(null);
+		
+		JButton btnNewButton = new JButton("Popular BD");
+		btnNewButton.setBounds(171, 109, 89, 23);
+		panel.add(btnNewButton);
 	}
 }
