@@ -88,6 +88,15 @@ public class ViewMenu extends JFrame {
 		});
 		mnNewMenu.add(mntmNewMenuItem_4);
 		
+		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Ocupações");
+		mntmNewMenuItem_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ViewOcupacao o = new ViewOcupacao();
+				o.setVisible(true);
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_5);
+		
 		JMenu mnNewMenu_1 = new JMenu("Ajuda");
 		menuBar.add(mnNewMenu_1);
 		
@@ -105,7 +114,7 @@ public class ViewMenu extends JFrame {
 		panel.setLayout(null);
 		
 		JButton btnNewButton = new JButton("Popular BD");
-		btnNewButton.setBounds(171, 109, 89, 23);
+		btnNewButton.setBounds(158, 109, 117, 23);
 		panel.add(btnNewButton);
 	}
 }
