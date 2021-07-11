@@ -53,5 +53,25 @@ public class LegislaturaDAO {
 		}
 
 	}
+	
+	public void update(Legislatura l) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		session.update(l);
+
+		session.getTransaction().commit();
+		session.close();
+	}
+	
+	public void delete(Legislatura l) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		session.delete(l);
+
+		session.getTransaction().commit();
+		session.close();
+	}
 
 }
