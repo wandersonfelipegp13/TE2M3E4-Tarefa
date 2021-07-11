@@ -65,5 +65,16 @@ public class DeputadoDAO {
 		session.close();
 	}
 	
+	public void delete(Deputado d) {
+		
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		
+		session.delete(d);
+
+		session.getTransaction().commit();
+		session.close();
+	}
+	
 
 }
