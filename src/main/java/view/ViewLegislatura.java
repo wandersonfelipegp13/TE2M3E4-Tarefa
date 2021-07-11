@@ -51,6 +51,7 @@ public class ViewLegislatura extends JFrame {
 	 * Create the frame.
 	 */
 	public ViewLegislatura() {
+		setTitle("Gerenciar Legislatura");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 487, 300);
 		contentPane = new JPanel();

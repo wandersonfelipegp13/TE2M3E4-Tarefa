@@ -53,5 +53,26 @@ public class UrlRedeSocialDAO {
 		}
 
 	}
+	
+	public void update(UrlRedeSocial r) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		session.update(r);
+
+		session.getTransaction().commit();
+		session.close();
+	}
+	
+	public void delete(UrlRedeSocial r) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+
+		session.delete(r);
+
+		session.getTransaction().commit();
+		session.close();
+	}
+
 
 }

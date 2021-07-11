@@ -41,6 +41,7 @@ public class ViewMenu extends JFrame {
 	 * Create the frame.
 	 */
 	public ViewMenu() {
+		setTitle("Dados Abertos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		

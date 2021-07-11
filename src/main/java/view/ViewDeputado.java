@@ -69,6 +69,7 @@ public class ViewDeputado extends JFrame {
 	 * Create the frame.
 	 */
 	public ViewDeputado() {
+		setTitle("Gerenciar Deputados");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 583, 420);
 		contentPane = new JPanel();
