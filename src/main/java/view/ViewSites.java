@@ -123,6 +123,15 @@ public class ViewSites extends JFrame {
 		panel.add(btnAtualizar);
 		
 		JButton btnNewButton_1_1 = new JButton("Deletar");
+		btnNewButton_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dados();
+				UrlWebsiteDAO dao = new UrlWebsiteDAO();
+				dao.setup();
+				dao.delete(site);
+				dao.exit();
+			}
+		});
 		btnNewButton_1_1.setBounds(230, 167, 154, 23);
 		panel.add(btnNewButton_1_1);
 		
