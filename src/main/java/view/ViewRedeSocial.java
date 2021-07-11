@@ -136,6 +136,15 @@ public class ViewRedeSocial extends JFrame {
 		panel.add(btnBuscar);
 		
 		JButton btnNewButton_1_1 = new JButton("Deletar");
+		btnNewButton_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dados();
+				UrlRedeSocialDAO dao = new UrlRedeSocialDAO();
+				dao.setup();
+				dao.delete(rede);
+				dao.exit();
+			}
+		});
 		btnNewButton_1_1.setBounds(219, 152, 165, 23);
 		panel.add(btnNewButton_1_1);
 	}
