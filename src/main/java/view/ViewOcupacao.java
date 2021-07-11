@@ -206,6 +206,15 @@ public class ViewOcupacao extends JFrame {
 		panel.add(btnBuscar);
 
 		JButton btnDeletar = new JButton("Deletar");
+		btnDeletar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dados();
+				OcupacaoDAO dao = new OcupacaoDAO();
+				dao.setup();
+				dao.delete(o);
+				dao.exit();
+			}
+		});
 		btnDeletar.setBounds(244, 292, 158, 23);
 		panel.add(btnDeletar);
 
