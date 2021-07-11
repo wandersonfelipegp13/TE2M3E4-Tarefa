@@ -110,10 +110,28 @@ public class ViewRedeSocial extends JFrame {
 		panel.add(btnNewButton);
 		
 		JButton btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dados();
+				UrlRedeSocialDAO dao = new UrlRedeSocialDAO();
+				dao.setup();
+				dao.update(rede);
+				dao.exit();
+			}
+		});
 		btnAtualizar.setBounds(219, 118, 165, 23);
 		panel.add(btnAtualizar);
 		
 		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				UrlRedeSocialDAO dao = new UrlRedeSocialDAO();
+				dao.setup();
+				rede = dao.read(Integer.parseInt(tfId.getText()));
+				dao.exit();
+				set();
+			}
+		});
 		btnBuscar.setBounds(42, 152, 167, 23);
 		panel.add(btnBuscar);
 		
@@ -127,6 +145,12 @@ public class ViewRedeSocial extends JFrame {
 		rede.setId(Integer.parseInt(tfId.getText()));
 		rede.setIdDeputado(Integer.parseInt(tfDep.getText()));
 		rede.setUrl(tfUrl.getText());
+	}
+	
+	private void set() {
+		tfId.setText(rede.getId() + "");
+		tfDep.setText(rede.getIdDeputado() + "");
+		tfUrl.setText(rede.getUrl());
 	}
 
 }
